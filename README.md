@@ -1,4 +1,4 @@
-# Boblight with BlinkStick support
+# Boblight
 
 This is Boblight repository based on [Boblight](https://code.google.com/p/boblight/) source code.
 This source code compiles on Linux, OSX and Windows.
@@ -39,7 +39,7 @@ Run boblightd by issuing the following command
 
 Alternatively you can supply your own config file manually, for example
 
-	./src/boblightd -c ./conf/blinkstick.conf
+	./src/boblightd -c ./conf/lightpack.conf
 
 
 Alternatively you can run boblightd with sudo.
@@ -78,7 +78,7 @@ Run boblightd by issuing the following command
 
 Alternatively you can supply your own config file manually, for example
 
-	./src/boblightd -c ./conf/blinkstick.conf
+	./src/boblightd -c ./conf/lightpack.conf
 
 ### Windows
 
@@ -114,7 +114,7 @@ You can run boblightd.exe from the Cygwin environment by executing the following
 
 Alternatively you can supply your own config file manually, for example
 
-	./src/boblightd.exe -c ./conf/blinkstick.conf
+	./src/boblightd.exe -c ./conf/lightpack.conf
 
 If you want to run Boblightd.exe as standalone application without Cygwin environment, you will need the following files
 
@@ -124,17 +124,6 @@ If you want to run Boblightd.exe as standalone application without Cygwin enviro
 	/bin/cygusb-1.0.dll
 	/bin/cygwin1.dll
 
-## Development
-
-Join the development of Boblight for BlinkStick! Here is how you can contribute:
-
-* Fork this repository
-* Write some awesome code
-* Issue a pull request
-
-## Support
-
-If you have any issues installing or using Boblight with BlinkStick, please post them on the [issue tracker](https://github.com/arvydas/boblight/issues).
 
 ## License
 
