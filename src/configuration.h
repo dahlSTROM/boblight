@@ -29,7 +29,6 @@
 #include "device/devicers232.h"
 #include "device/devicedioder.h"
 #include "device/deviceambioder.h"
-#include "device/deviceblinkstick.h"
 
 #ifdef HAVE_LIBPORTAUDIO
   #include "device/devicesound.h"
@@ -106,7 +105,6 @@ class CConfig
     bool BuildLtbl(CDevice*& device,  int devicenr, CClientsHandler& clients);
     bool BuildDioder(CDevice*& device, int devicenr, CClientsHandler& clients);
     bool BuildAmbioder(CDevice*& device, int devicenr, CClientsHandler& clients);
-    bool BuildBlinkstick(CDevice*& device, int devicenr, CClientsHandler& clients);
     bool SetDevicePrecision(CDeviceAmbioder*& device, int devicenr);
 
 #ifdef HAVE_LIBPORTAUDIO

@@ -355,7 +355,7 @@ bool CConfig::CheckDeviceConfig()
           valid = false;
         }
       }
-      else if (key == "allowsync" || key == "debug" || key == "inverse")//bool
+      else if (key == "allowsync" || key == "debug")//bool
       {
         bool bValue;
         if (!StrToBool(value, bValue))
@@ -795,23 +795,6 @@ bool CConfig::BuildDeviceConfig(std::vector<CDevice*>& devices, CClientsHandler&
       return false;
 #endif
     }
-    else if (type == "blinkstick")
-    {
-#ifdef HAVE_LIBUSB
-      CDevice* device = NULL;
-      if (!BuildBlinkstick(device, i, clients))
-      {
-        if (device)
-          delete device;
-        return false;
-      }
-      devices.push_back(device);
-#else
-      LogError("%s line %i: boblightd was built without libusb, no support for BlinkStick devices",
-               m_filename.c_str(), linenr);
-      return false;
-#endif
-    }
     else if (type == "lpd8806" || type == "ws2801")
     {
 #ifdef HAVE_LINUX_SPI_SPIDEV_H
@@ -1144,35 +1127,6 @@ bool CConfig::BuildLightpack(CDevice*& device, int devicenr, CClientsHandler& cl
   SetDeviceThreadPriority(lightpackdevice, devicenr);
 
   device->SetType(LIGHTPACK);
-
-  return true;
-}
-#endif
-
-#ifdef HAVE_LIBUSB
-bool CConfig::BuildBlinkstick(CDevice*& device, int devicenr, CClientsHandler& clients)
-{
-  CDeviceBlinkstick* blinkstickdevice = new CDeviceBlinkstick(clients);
-  device = blinkstickdevice;
-
-  if (!SetDeviceName(device, devicenr))
-    return false;
-
-  if (!SetDeviceChannels(device, devicenr))
-    return false;
-
-  if (!SetDeviceInterval(device, devicenr))
-    return false;
-
-  SetDeviceBus(blinkstickdevice, devicenr);
-  SetDeviceAddress(blinkstickdevice, devicenr);
-  SetSerial(blinkstickdevice, devicenr);
-  SetDeviceAllowSync(blinkstickdevice, devicenr);
-  SetDeviceDebug(blinkstickdevice, devicenr);
-  SetDeviceThreadPriority(blinkstickdevice, devicenr);
-  SetDeviceInverse(blinkstickdevice, devicenr);
-
-  device->SetType(BLINKSTICK);
 
   return true;
 }
@@ -1521,20 +1475,6 @@ void CConfig::SetDeviceDebug(CDevice* device, int devicenr)
   bool debug;
   StrToBool(strvalue, debug);
   device->SetDebug(debug);
-}
-
-void CConfig::SetDeviceInverse(CDevice* device, int devicenr)
-{
-  string line, strvalue;
-  int linenr = GetLineWithKey("inverse", m_devicelines[devicenr].lines, line);
-  if (linenr == -1)
-    return;
-
-  GetWord(line, strvalue);
-
-  bool inverse;
-  StrToBool(strvalue, inverse);
-  device->SetInverse(inverse);
 }
 
 bool CConfig::SetDeviceBits(CDeviceRS232* device, int devicenr)

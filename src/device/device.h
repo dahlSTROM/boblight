@@ -37,7 +37,6 @@
 #define WS2801    12
 #define LIGHTPACK 13
 #define AMBIODER  14
-#define BLINKSTICK  15
 
 
 #include <string>
@@ -105,7 +104,6 @@ class CDevice : public CThread
     void SetInterval(int64_t usecs)                   { m_interval = usecs; }
     void SetAllowSync(bool allowsync)                 { m_allowsync = allowsync; }
     void SetDebug(bool debug)                         { m_debug = debug; }
-    void SetInverse(bool inverse)                     { m_inverse = inverse; }
     void SetDelayAfterOpen(int64_t delay)             { m_delayafteropen = delay; }
     void SetThreadPriority(int priority)              { m_threadpriority = priority; m_setpriority = true;}
 
@@ -130,7 +128,6 @@ class CDevice : public CThread
     int64_t     m_interval;
     bool        m_allowsync;
     bool        m_debug;
-    bool        m_inverse;
     int64_t     m_delayafteropen;
     int         m_threadpriority;
     bool        m_setpriority;

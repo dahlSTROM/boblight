@@ -1,18 +1,13 @@
 # Boblight with BlinkStick support
 
-This is Boblight repository with BlinkStick support based on [Boblight](https://code.google.com/p/boblight/) source code.
+This is Boblight repository based on [Boblight](https://code.google.com/p/boblight/) source code.
 This source code compiles on Linux, OSX and Windows.
 
-BlinkStick is a smart USB-Controlled LED Pixel. More information about it here:
-
-http://www.blinkstick.com
 
 ## Changes from official source code
 
 * Build environment cleanup
 * Full support for Windows build environment under [Cygwin](https://www.cygwin.com/)
-* BlinkStick support under Linux and OSX with libusb
-* BlinkStick support under Windows without extra drivers using native Windows HID API
 
 ## Build
 
@@ -24,7 +19,7 @@ Prepare the build environment
 
 Clone this repository
 
-	git clone http://github.com/arvydas/boblight
+	git clone https://github.com/dahlSTROM/boblight
 
 Change directory
 
@@ -37,7 +32,6 @@ Run the following commands to set up build environment and build boblight
 	make
 	
 Set up your configuration file as described in the [Boblight wiki](https://code.google.com/p/boblight/wiki/boblightconf). 
-Sample configuration files for BlinkStick are available in the ./conf subdirectory of the source code repository.
 
 Run boblightd by issuing the following command
 
@@ -47,9 +41,6 @@ Alternatively you can supply your own config file manually, for example
 
 	./src/boblightd -c ./conf/blinkstick.conf
 
-If you get permission problems that access to BlinkStick is denied, please run the following command:
-
-	echo "SUBSYSTEM==\"usb\", ATTR{idVendor}==\"20a0\", ATTR{idProduct}==\"41e5\", MODE:=\"0666\"" | sudo tee /etc/udev/rules.d/85-blinkstick.rules
 
 Alternatively you can run boblightd with sudo.
 
@@ -67,7 +58,7 @@ Prepare the build environment
 
 Clone this repository
 
-	git clone http://github.com/arvydas/boblight
+	git clone https://github.com/dahlSTROM/boblight
 
 Change directory
 
@@ -80,7 +71,6 @@ Run the following commands to set up build environment and build boblight
 	make
 	
 Set up your configuration file as described in the [Boblight wiki](https://code.google.com/p/boblight/wiki/boblightconf). 
-Sample configuration files for BlinkStick are available in the ./conf subdirectory of the source code repository.
 
 Run boblightd by issuing the following command
 
@@ -104,7 +94,7 @@ Building under Windows requires Cygwin environment. Prepare it by installing [Cy
 
 Open Cygwin shell and clone this repository
 
-	git clone http://github.com/arvydas/boblight
+	git clone https://github.com/dahlSTROM/boblight
 
 Change directory
 
@@ -117,7 +107,6 @@ Run the following commands to set up build environment and build boblight
 	make
 
 Set up your configuration file as described in the [Boblight wiki](https://code.google.com/p/boblight/wiki/boblightconf). 
-Sample configuration files for BlinkStick are available in the ./conf subdirectory of the source code repository.
 
 You can run boblightd.exe from the Cygwin environment by executing the following command
 
